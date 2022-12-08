@@ -19,7 +19,6 @@ describe('post routes', () => {
       id: expect.any(String),
       title: expect.any(String),
       content: expect.any(String),
-      user_id: expect.any(String),
     });
   });
   it('#POST allows authenticated users to create posts', async () => {
@@ -29,7 +28,7 @@ describe('post routes', () => {
     };
 
     await agent.get('/api/v1/github/callback?code=42');
-    const res = await (await agent.post('/api/v1/posts')).send(mockPost);
+    const res = await agent.post('/api/v1/posts').send(mockPost);
 
     expect(res.status).toBe(200);
     expect(res.body).toEqual({

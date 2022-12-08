@@ -20,10 +20,9 @@ CREATE TABLE github_users (
 CREATE TABLE posts (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   title VARCHAR,
-  content VARCHAR(255),
-  user_id BIGINT
+  content VARCHAR(255)
 );
 
-INSERT INTO posts (title, content, user_id) VALUES
-('Oy! Ello There!', 'You! Yeah, you, mate. Whatchoo doin on my github, eh?', 1),
-('Song lyrics are', 'Cool. Yeah, cool. Thats deep, man', 2);
+INSERT INTO posts (title, content) VALUES
+('Oy! Ello There!', 'You! Yeah, you, mate. Whatchoo doin on my github, eh?'),
+('Song lyrics are', 'Cool. Yeah, cool. Thats deep, man');
