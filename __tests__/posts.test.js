@@ -22,6 +22,23 @@ describe('post routes', () => {
       user_id: expect.any(String),
     });
   });
+  it('#POST allows authenticated users to create posts', async () => {
+    const mockPost = {
+      title: 'Irish music rocks',
+      content: 'Yall be trippin, nothing beats Irish music. High Kings 4ever, yo.',
+    };
+
+    await agent.get('/api/v1/github/callback?code=42');
+    const res = await (await agent.post('/api/v1/posts')).send(mockPost);
+
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      title: 'Irish music rocks',
+      content: 'Yall be trippin, nothing beats Irish music. High Kings 4ever, yo.',
+    });
+    
+  });
   
   afterAll(() => {
     pool.end();
