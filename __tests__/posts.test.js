@@ -23,4 +23,7 @@ describe('post routes', () => {
     });
   });
   
-})
+  afterAll(() => {
+    pool.end();
+  });
+});
